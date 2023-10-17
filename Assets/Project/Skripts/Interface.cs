@@ -10,7 +10,7 @@ public class Interface : MonoBehaviour
     public bool fli;
     public Scrollbar sense;
     public Data data;
-    public UnityEvent gameer, menue, chekPoint, down, andlevel;
+    public UnityEvent gameer, menue, andlevel;
     public static Interface rid { get; set; }
     void Awake()
     {
@@ -39,31 +39,12 @@ public class Interface : MonoBehaviour
         Time.timeScale = 0;
         Lock(false);
     }
-    public void ChekPoint()
-    {
-        Muwer.rid.controller.enabled = false;
-        chekPoint.Invoke();
-        Time.timeScale = 0;
-        Lock(false);
-    }
 
-    public void Down()
-    {
-        if (fli)
-        {
-            Muwer.rid.controller.enabled = false;
-            down.Invoke();
-            Time.timeScale = 0;
-            Lock(false);
-        }
-    }
 
     public void Game()
     {
         SoundPlayer.regit.sorse.Play();
         fli = false;
-        Muwer.rid.sensitivity = sense.value;
-        Muwer.rid.controller.enabled = true;
         gameer.Invoke();
         Time.timeScale = 1;
         Lock(true);
@@ -80,8 +61,6 @@ public class Interface : MonoBehaviour
     void Lock(bool stateTemp)
     {
         SoundPlayer.regit.sorse.Stop();
-        Muwer.rid.muve = Vector2.zero;
-        Muwer.rid.rut = Vector2.zero;
         if (stateTemp && (Bridge.device.type == InstantGamesBridge.Modules.Device.DeviceType.Desktop))
         {
             Cursor.visible = false;
@@ -93,6 +72,4 @@ public class Interface : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
     }
-
-
 }
