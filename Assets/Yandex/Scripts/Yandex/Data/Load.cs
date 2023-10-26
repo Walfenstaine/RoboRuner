@@ -6,17 +6,11 @@ using UnityEngine;
 
 public class Load : MonoBehaviour, IEventReceiver<OnLoadIsComplete>
 {
-    public Animator anim;
     public Data data;
-
-    public void Set()
-    {
-        SceneManager.LoadScene(data.lvl);
-    }
 
     public void OnEvent(OnLoadIsComplete e)
     {
-        anim.SetFloat("Speed",1);
+        SceneManager.LoadScene(data.lvl);
     }
 
     void Start()

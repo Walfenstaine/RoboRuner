@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
-    public Vector3 position;
-    public GameObject playr;
     public static Teleport rid { get; set; }
     void Awake()
     {
@@ -21,17 +19,5 @@ public class Teleport : MonoBehaviour
     void OnDestroy()
     {
         rid = null;
-    }
-    void Start()
-    {
-        Repit();
-    }
-    public void Repit()
-    {
-        position = Muwer.rid.transform.position;
-    }
-    public void Port()
-    {
-        Muwer.rid.transform.position = position;
     }
 }

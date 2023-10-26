@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Wey : MonoBehaviour
 {
-    public float speed;
+    private float speed;
+
+    private void Start()
+    {
+        speed = Muwer.rid.speed;
+    }
     void Update()
     {
         transform.position -= transform.forward * speed * Time.deltaTime;

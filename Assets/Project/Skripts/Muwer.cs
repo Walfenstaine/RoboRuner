@@ -25,7 +25,7 @@ public class Muwer : MonoBehaviour {
         if (number == Mathf.Clamp(number, 0, 2))
         {
             transform.position = Vector3.Lerp(transform.position, poses[number], 1.5f * Time.deltaTime);
-            var rut = (poses[number] + new Vector3(0, 0, 2)) - transform.position;
+            var rut = (poses[number] + new Vector3(0, 0, 3)) - transform.position;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(rut), 5.5f * Time.deltaTime);
         }
         else

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca20fdb92787a34b894064058ac2cb2, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  record: 8
-  sense: 1
+  record: 91
+  up: 61
+  lvl: Scene1
+  sense: 0.8997648
   soundOn: 1
