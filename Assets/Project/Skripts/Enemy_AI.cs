@@ -5,8 +5,15 @@ using UnityEngine.AI;
 
 public class Enemy_AI : MonoBehaviour
 {
+    public GameObject nagrada;
     public NavMeshAgent agent;
     public Animator anim;
+
+    public void Ded()
+    {
+        Instantiate(nagrada, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
     void Update()
     {
         agent.destination = Teleport.rid.transform.position;
