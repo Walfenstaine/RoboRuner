@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2159556883534c42b8c9420514b57c5, type: 3}
   m_Name: Ru
   m_EditorClassIdentifier: 
-  <en>k__BackingField: https://yandex.ru/games/developer?name=Pavel%20Petrov
-  <ru>k__BackingField: https://yandex.ru/games/developer?name=Pavel%20Petrov
+  <en>k__BackingField: "https://yandex.ru/games/developer?name=\u041F\u0430\u0432\u0435\u043B%20\u0413\u0443\u0440\u0435\u0435\u0432"
+  <ru>k__BackingField: "https://yandex.ru/games/developer?name=\u041F\u0430\u0432\u0435\u043B%20\u0413\u0443\u0440\u0435\u0435\u0432"

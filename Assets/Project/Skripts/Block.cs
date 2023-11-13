@@ -1,44 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Block : MonoBehaviour
 {
-    public GameObject boom;
-    public ParticleSystem ps;
-    public Text text;
-    public int helse;
-    private float speed;
-
+    public Animator anim;
+    public static Block rid { get; set; }
+    void Awake()
+    {
+        if (rid == null)
+        {
+            rid = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+    void OnDestroy()
+    {
+        rid = null;
+    }
     private void Start()
     {
-        speed = Muwer.rid.speed;
+        anim.SetFloat("Speed", 0); 
     }
 
-    public void Damage(int damag)
+    public void Damage()
     {
-        if (damag < helse)
-        {
-            helse -= damag;
-            ps.Play();
-        }
-        else
-        {
-            Destroy(gameObject);
-            Instantiate(boom, transform.position, Quaternion.identity);
-        }
+        anim.SetBool("Kik", true);
     }
-    void Update()
+    public void Resed()
     {
-        if (transform.position.z > -10)
-        {
-            text.text = "" + helse;
-            transform.position -= transform.forward * speed * Time.deltaTime;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        anim.SetBool("Kik", false);
     }
 }

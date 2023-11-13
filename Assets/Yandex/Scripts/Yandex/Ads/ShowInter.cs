@@ -8,6 +8,7 @@ using pEventBus;
 
 public class ShowInter : MonoBehaviour, IEventReceiver<ShowInterAds>
 {
+    public bool showADS;
     public AudioSource sorse;
     public Data data;
     private float scale = 1;
@@ -22,24 +23,30 @@ public class ShowInter : MonoBehaviour, IEventReceiver<ShowInterAds>
 
         });
     }
-
+    private void Awake()
+    {
+        if (showADS)
+        {
+            ShowADS();
+        }
+    }
     void OnDestroy()
     {
         Bridge.advertisement.interstitialStateChanged -= Interstitial;
         EventBus.UnRegister(this);
     }
 
-    void Awake()
-    {
-        ShowADS();
-    }
     public void ShowADS()
     {
-        var ignoreDelay = false;
-        Bridge.advertisement.ShowInterstitial(ignoreDelay, success =>
+        if (showADS)
         {
+            var ignoreDelay = false;
+            Bridge.advertisement.ShowInterstitial(ignoreDelay, success =>
+            {
 
-        });
+            });
+        }
+            
     }
 
     public void OnEvent(ShowInterAds e)

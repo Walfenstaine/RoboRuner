@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnEmiter : MonoBehaviour
 {
-    public AudioClip emit;
+    public Data data;
     public GameObject[] enemy;
     public float interval;
     public ParticleSystem pS;
@@ -15,11 +15,19 @@ public class EnEmiter : MonoBehaviour
     }
     void Emit()
     {
+        if (data.record < 70)
+        {
+            interval = (100 - data.record) / 10;
+        }
+        else
+        {
+            interval = 3;
+        }
+        
         int num = Random.Range(0, enemy.Length);
-        //SoundPlayer.regit.sorse.PlayOneShot(emit);
+        pS.Play();
         Instantiate(enemy[num], transform.position, Quaternion.identity);
         timer = Time.time;
-        //pS.Play();
     }
     private void Update()
     {

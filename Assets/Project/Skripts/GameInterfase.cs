@@ -2,37 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using InstantGamesBridge;
 
 public class GameInterfase : MonoBehaviour
 {
+    public int and;
+    public int his_Cor;
     public Data data;
-    public Text record, upp;
-    [SerializeField] private Language up;
-    [SerializeField] private Language rec;
-
+    public Text record, hiscor;
+    public static GameInterfase rid { get; set; }
+    private int stat;
+    void Awake()
+    {
+        his_Cor = data.record;
+        stat = data.record + and;
+        if (rid == null)
+        {
+            rid = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+    void OnDestroy()
+    {
+        rid = null;
+    }
     void Update()
     {
-        if (Muwer.rid != null)
+        record.text = "" + data.record;
+        hiscor.text = "" + his_Cor;
+
+        if (his_Cor == data.record + 10)
         {
-            int pos = ((int)Muwer.rid.transform.position.y - 1) + data.up;
-            if (Bridge.platform.language == "ru")
-            {
-                record.text = rec.ru + ": " + (data.record);
-                upp.text = up.ru + ": " + pos;
-            }
-            else
-            {
-                upp.text = up.en + ": " + pos;
-                record.text = rec.en + ": " + (data.record);
-
-            }
-
-            if (pos == data.record+10)
-            {
-                data.record = pos;
-                SaveAndLoad.Instance.Save();
-            }
+            data.record = his_Cor;
+            SaveAndLoad.Instance.Save();
+            Teleport.rid.Rendom();
+        }
+        if (his_Cor == stat)
+        {
+            Interface.rid.Andlevel();
+            data.record = his_Cor;
+            SaveAndLoad.Instance.Save();
         }
     }
 }

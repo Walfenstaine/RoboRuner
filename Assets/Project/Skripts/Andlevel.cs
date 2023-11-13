@@ -10,7 +10,6 @@ public class Andlevel : MonoBehaviour
     {
         SaveAndLoad.Instance.Save();
         SceneManager.LoadScene(lvl);
-        data.up += data.record;
         data.lvl = lvl;
     }
 }
